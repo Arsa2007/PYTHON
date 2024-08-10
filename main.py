@@ -1,63 +1,20 @@
-import random
+class StdAcc:
+  def __init__(self,name,account_no,balance):
+    self.name=name
+    self.account_no=account_no
+    self.balance=balance
 
-def get_choices():
-  player = input("Enter a choice (rock, paper, scissors)") 
-  ddict=['scissors','paper','rock']
-  computer = random.choices(ddict)
-  dict={"PlAYERCHOICE":player,"COMPUTERCHOICE":computer}
-  return dict
-  
-  
+  def credit(self,amount):
+      self.balance= amount +self.balance
+      print(self.balance)
 
-
-
-def check(play,comp):
-  if play == comp :
-    return "It's a tie"
-    
-  elif play == "rock" :
-     if comp == "scissors" :  
-       return "rock wins" 
-  elif play == "rock" : 
-     if comp == "paper" :  
-        return "paper wins"
-  elif play == "rock" :
-     if comp == "rock" :  
-       return "TIE"
-       
-  elif play == "scissors" :
-     if comp == "paper" : 
-       return "scissors wins"
-  elif play == "scissors"  :
-     if comp == "rock" :
-       return "rock wins"
-  elif play == "scissors" :
-      if comp == "scissors" :
-        return "TIE"
-        
-  elif play == "paper" :
-      if comp == "scissors" :
-        return "scissors wins"     
-  elif play == "paper" :
-     if comp == "rock" :
-      return "rock wins"
-  elif play == "paper" :
-   if comp == "paper" :
-    return "TIE"
-  else:
-    return "invalid"
-
-def play_game():
- GAME = get_choices()
- GAME1 = check(GAME["PlAYERCHOICE"],GAME["COMPUTERCHOICE"][0])
- print(GAME1)
-  
+  def debit(self,amount):
+      self.balance= self.balance -amount
+      print(self.balance)
 
 
-a = play_game() 
-print(a)
 
-
-      
-
-        
+s=StdAcc("Ram",123,1000)
+print(s)
+s.credit(100)
+s.debit(500)
